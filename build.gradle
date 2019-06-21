@@ -1,0 +1,34 @@
+buildscript {
+    dependencies {
+        classpath 'com.h2database:h2:1.4.197'
+    }
+}
+
+plugins {
+    id 'java'
+    id "org.flywaydb.flyway" version "4.0.3"
+}
+
+group 'springflyway'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // https://mvnrepository.com/artifact/org.flywaydb/flyway-core
+    compile group: 'org.flywaydb', name: 'flyway-core', version: '4.2.0'
+    // https://mvnrepository.com/artifact/org.springframework/spring-jdbc
+    compile group: 'org.springframework', name: 'spring-jdbc', version: '4.3.20.RELEASE'
+
+}
+
+flyway {
+    url = 'jdbc:h2:file:./target/foobar'
+    user = 'mytest'
+    password ='mytest'
+}
