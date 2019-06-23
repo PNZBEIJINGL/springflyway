@@ -30,12 +30,15 @@ public class FlywayMigration {
 
         Flyway flyway = new Flyway();
         System.out.println(flyway.getClass().getClassLoader().getResource("").getPath());//输出当前目录，用于核对脚本路径是否能正确读取
-        flyway.setDataSource(dataSource);//设置数据源
-        //flyway.setSchemas("flywaydemo"); // 设置接受flyway进行版本管理的多个数据库
-        //flyway.setTable("schema_version");// 设置存放flyway metadata数据的表名.默认小写的schema_version
-        flyway.setBaselineOnMigrate(true);//设置基线，已经开发过一段时间的数据库需要设置为true
-        //flyway.setLocations("db.migrations", "db.migration"); //设置flyway扫描sql升级脚本、java升级脚本的目录路径或包路径。脚本命名规约详见flyway官网
-        flyway.setEncoding("UTF-8"); // 设置sql脚本文件的编码
+
+        //设置数据源
+        flyway.setDataSource(dataSource);
+
+        // 设置存放flyway metadata数据的表名.默认小写的schema_version
+        //flyway.setTable("flyway_version");
+
+        //设置sql编码
+        flyway.setEncoding("UTF-8");
         flyway.migrate();
 
     }
