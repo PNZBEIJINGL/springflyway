@@ -1,6 +1,8 @@
 官网 https://flywaydb.org/getstarted/how
 
-How Flyway works
+一些基础知识
+
+一、How Flyway works
 
 The easiest scenario is when you point Flyway to an empty database.
 最容易的方案是Flyway指向一个空的数据库。
@@ -40,3 +42,10 @@ The metadata table is updated accordingly:
 
 And that's it! Every time the need to evolve the database arises, whether structure (DDL) or reference data (DML), simply create a new migration with a version number higher than the current one. The next time Flyway starts, it will find it and upgrade the database accordingly.
 这样的话，每次要做数据库升级，无论是执行DDL语句还是执行DML语句，所有的解决的问题的就是创建一个高于现在版本的迁移文件。当下一次Flyway开始运行的时候，它将会自动发现升级脚本，执行并且更新元数据表。
+
+
+二、名明规则
+数据库中的schema_version为存储对比脚本版本的表
+sql脚本默认放置在 classpath:db/migration
+
+文件以.sql结尾，命名V字开头，后面数字为版本号 例如 V1__init.sql
