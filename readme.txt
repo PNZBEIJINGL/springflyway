@@ -48,4 +48,6 @@ And that's it! Every time the need to evolve the database arises, whether struct
 数据库中的schema_version为存储对比脚本版本的表
 sql脚本默认放置在 classpath:db/migration
 
+数据迁移文件名称格式为：V[version]__[name].sql。
 文件以.sql结尾，命名V字开头，后面数字为版本号 例如 V1__init.sql
+注意：名称中[version]和[name]之间是两个下划线！
